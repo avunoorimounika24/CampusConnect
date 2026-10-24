@@ -107,9 +107,9 @@ const Register = () => {
   };
 
   return (
-    <div style={{ padding: '50px 0 90px' }}>
+    <div className="auth-page-wrap">
       <div className="container" style={{ maxWidth: '620px' }}>
-        <div className="card" style={{ padding: '36px' }}>
+        <div className="card auth-card">
           <div style={{ textAlign: 'center', marginBottom: '28px' }}>
             <div style={{
               width: '48px',
@@ -124,10 +124,10 @@ const Register = () => {
             }}>
               <UserPlus size={24} />
             </div>
-            <h1 style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--primary-navy)', marginBottom: '6px' }}>
+            <h1 className="page-title" style={{ fontSize: '1.8rem', textAlign: 'center' }}>
               Create Student Account
             </h1>
-            <p style={{ color: 'var(--secondary-text)', fontSize: '0.92rem' }}>
+            <p className="page-subtitle" style={{ fontSize: '0.92rem', textAlign: 'center' }}>
               Join CampusConnect with your university student profile
             </p>
           </div>

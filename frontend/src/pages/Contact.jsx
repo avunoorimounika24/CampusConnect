@@ -65,22 +65,22 @@ const Contact = () => {
   };
 
   return (
-    <div style={{ padding: '40px 0 90px' }}>
+    <div className="section-py" style={{ paddingTop: '40px' }}>
       <div className="container">
         {/* Page Header */}
         <div style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto 50px' }}>
           <span className="badge badge-purple" style={{ marginBottom: '8px' }}>Direct Communication</span>
-          <h1 style={{ fontSize: '2.4rem', fontWeight: 800, color: 'var(--primary-navy)', marginBottom: '10px' }}>
+          <h1 className="page-title">
             Get in Touch with Campus Administration
           </h1>
-          <p style={{ color: 'var(--secondary-text)', fontSize: '1.02rem' }}>
+          <p className="page-subtitle">
             Have questions regarding upcoming hackathons, club registration, or venue bookings? Send us a message or visit our campus office.
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.8fr', gap: '36px', alignItems: 'start' }}>
+        <div className="contact-grid">
           {/* Contact Information Card */}
-          <div className="card" style={{ padding: '36px' }}>
+          <div className="card card-padded">
             <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--primary-navy)', marginBottom: '18px' }}>
               Campus Office Information
             </h3>
@@ -150,7 +150,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Submission Form */}
-          <div className="card" style={{ padding: '36px' }}>
+          <div className="card card-padded">
             <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--primary-navy)', marginBottom: '18px' }}>
               Send an Official Inquiry
             </h3>

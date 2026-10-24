@@ -65,9 +65,9 @@ const Login = () => {
   };
 
   return (
-    <div style={{ padding: '60px 0 100px' }}>
+    <div className="auth-page-wrap">
       <div className="container" style={{ maxWidth: '480px' }}>
-        <div className="card" style={{ padding: '36px' }}>
+        <div className="card auth-card">
           <div style={{ textAlign: 'center', marginBottom: '24px' }}>
             <div style={{
               width: '52px',
@@ -82,10 +82,10 @@ const Login = () => {
             }}>
               {activeTab === 'admin' ? <ShieldCheck size={28} /> : <LogIn size={26} />}
             </div>
-            <h1 style={{ fontSize: '1.85rem', fontWeight: 800, color: 'var(--primary-navy)', marginBottom: '6px' }}>
+            <h1 className="page-title" style={{ fontSize: '1.85rem', textAlign: 'center' }}>
               {activeTab === 'admin' ? 'Administrator Portal' : 'Student Sign In'}
             </h1>
-            <p style={{ color: 'var(--secondary-text)', fontSize: '0.92rem' }}>
+            <p className="page-subtitle" style={{ fontSize: '0.92rem', textAlign: 'center' }}>
               {activeTab === 'admin'
                 ? 'Sign in with university administrative credentials'
                 : 'Sign in to access your event registrations and profile'}
@@ -109,20 +109,21 @@ const Login = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '8px',
-                padding: '9px',
+                gap: '6px',
+                padding: '9px 4px',
                 borderRadius: 'var(--radius-sm)',
                 border: 'none',
                 cursor: 'pointer',
                 fontWeight: 700,
-                fontSize: '0.88rem',
+                fontSize: '0.84rem',
                 transition: 'var(--transition)',
                 backgroundColor: activeTab === 'student' ? 'var(--white)' : 'transparent',
                 color: activeTab === 'student' ? 'var(--purple-accent)' : 'var(--secondary-text)',
-                boxShadow: activeTab === 'student' ? 'var(--shadow-sm)' : 'none'
+                boxShadow: activeTab === 'student' ? 'var(--shadow-sm)' : 'none',
+                whiteSpace: 'nowrap'
               }}
             >
-              <User size={16} /> Student
+              <User size={15} /> Student
             </button>
 
             <button
@@ -132,20 +133,21 @@ const Login = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '8px',
-                padding: '9px',
+                gap: '6px',
+                padding: '9px 4px',
                 borderRadius: 'var(--radius-sm)',
                 border: 'none',
                 cursor: 'pointer',
                 fontWeight: 700,
-                fontSize: '0.88rem',
+                fontSize: '0.84rem',
                 transition: 'var(--transition)',
                 backgroundColor: activeTab === 'admin' ? 'var(--white)' : 'transparent',
                 color: activeTab === 'admin' ? 'var(--primary-navy)' : 'var(--secondary-text)',
-                boxShadow: activeTab === 'admin' ? 'var(--shadow-sm)' : 'none'
+                boxShadow: activeTab === 'admin' ? 'var(--shadow-sm)' : 'none',
+                whiteSpace: 'nowrap'
               }}
             >
-              <ShieldCheck size={16} /> Administrator
+              <ShieldCheck size={15} /> Administrator
             </button>
           </div>
 
@@ -212,7 +214,7 @@ const Login = () => {
                 type="button"
                 onClick={() => fillCredentials('student@rgukt.ac.in', 'Student@1234', 'student')}
                 className={`btn btn-sm ${activeTab === 'student' ? 'btn-primary' : 'btn-outline'}`}
-                style={{ fontSize: '0.78rem', padding: '5px 10px' }}
+                style={{ fontSize: '0.78rem', padding: '7px 10px', flex: '1 1 140px' }}
               >
                 Fill Student Credentials
               </button>
@@ -220,7 +222,7 @@ const Login = () => {
                 type="button"
                 onClick={() => fillCredentials('admin@campusconnect.edu', 'Admin@12345', 'admin')}
                 className={`btn btn-sm ${activeTab === 'admin' ? 'btn-navy' : 'btn-outline'}`}
-                style={{ fontSize: '0.78rem', padding: '5px 10px' }}
+                style={{ fontSize: '0.78rem', padding: '7px 10px', flex: '1 1 140px' }}
               >
                 Fill Admin Credentials
               </button>

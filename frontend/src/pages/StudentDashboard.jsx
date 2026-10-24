@@ -93,18 +93,18 @@ const StudentDashboard = () => {
   const completedEvents = confirmedRegistrations.filter(r => r.eventDate < today);
 
   return (
-    <div style={{ padding: '40px 0 80px' }}>
+    <div className="section-py" style={{ paddingTop: '40px' }}>
       <div className="container">
         {/* Welcome Header */}
         <div style={{ marginBottom: '32px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px', flexWrap: 'wrap' }}>
             <span className="badge badge-purple">Student Portal</span>
             <span className="badge badge-navy">ID: {user?.studentId || 'N/A'}</span>
           </div>
-          <h1 style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--primary-navy)', marginBottom: '6px' }}>
+          <h1 className="page-title">
             Welcome back, {user?.fullName}!
           </h1>
-          <p style={{ color: 'var(--secondary-text)', fontSize: '1rem' }}>
+          <p className="page-subtitle">
             Track and manage your collegiate registrations, upcoming venues, and activity history.
           </p>
         </div>
@@ -124,52 +124,52 @@ const StudentDashboard = () => {
         )}
 
         {/* Top Summary Cards */}
-        <div className="grid-4" style={{ marginBottom: '36px' }}>
-          <div className="card" style={{ padding: '22px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+        <div className="stats-grid" style={{ marginBottom: '36px' }}>
+          <div className="card stat-card">
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
               <span style={{ fontSize: '0.85rem', color: 'var(--secondary-text)', fontWeight: 600 }}>Total Registrations</span>
               <Calendar size={18} color="var(--purple-accent)" />
             </div>
-            <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--primary-navy)' }}>
+            <div className="stat-card-value" style={{ color: 'var(--primary-navy)' }}>
               {totalRegistrations}
             </div>
           </div>
 
-          <div className="card" style={{ padding: '22px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+          <div className="card stat-card">
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
               <span style={{ fontSize: '0.85rem', color: 'var(--secondary-text)', fontWeight: 600 }}>Upcoming Events</span>
               <Clock size={18} color="var(--purple-accent)" />
             </div>
-            <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--purple-accent)' }}>
+            <div className="stat-card-value" style={{ color: 'var(--purple-accent)' }}>
               {upcomingEvents.length}
             </div>
           </div>
 
-          <div className="card" style={{ padding: '22px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+          <div className="card stat-card">
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
               <span style={{ fontSize: '0.85rem', color: 'var(--secondary-text)', fontWeight: 600 }}>Completed Events</span>
               <CheckCircle2 size={18} color="var(--success)" />
             </div>
-            <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--success)' }}>
+            <div className="stat-card-value" style={{ color: 'var(--success)' }}>
               {completedEvents.length}
             </div>
           </div>
 
-          <div className="card" style={{ padding: '22px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+          <div className="card stat-card">
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
               <span style={{ fontSize: '0.85rem', color: 'var(--secondary-text)', fontWeight: 600 }}>Cancelled</span>
               <XCircle size={18} color="var(--error)" />
             </div>
-            <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--secondary-text)' }}>
+            <div className="stat-card-value" style={{ color: 'var(--secondary-text)' }}>
               {cancelledRegistrations.length}
             </div>
           </div>
         </div>
 
         {/* Profile + Registrations Two-Column Layout */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 2.4fr', gap: '30px', alignItems: 'start' }}>
+        <div className="student-dashboard-layout">
           {/* Left Column: Student Profile Details */}
-          <div className="card" style={{ padding: '28px' }}>
+          <div className="card card-padded">
             <div style={{ textAlign: 'center', marginBottom: '20px', paddingBottom: '16px', borderBottom: '1px solid var(--border-light)' }}>
               <div style={{
                 width: '64px',
@@ -232,8 +232,8 @@ const StudentDashboard = () => {
           </div>
 
           {/* Right Column: Registrations History Table */}
-          <div className="card" style={{ padding: '28px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+          <div className="card card-padded">
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '10px' }}>
               <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--primary-navy)' }}>
                 My Event Registrations
               </h3>
@@ -262,68 +262,71 @@ const StudentDashboard = () => {
                 </Link>
               </div>
             ) : (
-              <div className="table-responsive">
-                <table className="custom-table">
-                  <thead>
-                    <tr>
-                      <th>Event</th>
-                      <th>Category</th>
-                      <th>Date & Venue</th>
-                      <th>Status</th>
-                      <th style={{ textAlign: 'right' }}>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {registrations.map((reg) => (
-                      <tr key={reg.id}>
-                        <td>
-                          <div style={{ fontWeight: 700, color: 'var(--primary-navy)', maxWidth: '240px' }}>
-                            {reg.eventTitle}
-                          </div>
-                          <span style={{ fontSize: '0.78rem', color: 'var(--secondary-text)' }}>
-                            Registered on {formatDate(reg.registrationDate)}
-                          </span>
-                        </td>
-                        <td>
-                          <span className="badge badge-purple" style={{ fontSize: '0.72rem' }}>
-                            {reg.category}
-                          </span>
-                        </td>
-                        <td>
-                          <div style={{ fontWeight: 600 }}>{formatDate(reg.eventDate)}</div>
-                          <div style={{ fontSize: '0.8rem', color: 'var(--secondary-text)', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            <MapPin size={12} /> {reg.venue}
-                          </div>
-                        </td>
-                        <td>
-                          <span className={`badge ${reg.status === 'CONFIRMED' ? 'badge-success' : 'badge-error'}`}>
-                            {reg.status}
-                          </span>
-                        </td>
-                        <td style={{ textAlign: 'right' }}>
-                          <div style={{ display: 'inline-flex', gap: '8px' }}>
-                            <Link
-                              to={`/events/${reg.eventId}`}
-                              className="btn btn-outline btn-sm"
-                              title="View Event Details"
-                            >
-                              <ExternalLink size={14} />
-                            </Link>
-                            {reg.status === 'CONFIRMED' && reg.eventDate >= today && (
-                              <button
-                                onClick={() => setCancelTarget(reg)}
-                                className="btn btn-outline-danger btn-sm"
-                                title="Cancel Registration"
-                              >
-                                Cancel
-                              </button>
-                            )}
-                          </div>
-                        </td>
+              <div>
+                <div className="table-responsive">
+                  <table className="custom-table custom-table-registrations">
+                    <thead>
+                      <tr>
+                        <th>Event</th>
+                        <th>Category</th>
+                        <th>Date & Venue</th>
+                        <th>Status</th>
+                        <th style={{ textAlign: 'right' }}>Actions</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {registrations.map((reg) => (
+                        <tr key={reg.id}>
+                          <td>
+                            <div style={{ fontWeight: 700, color: 'var(--primary-navy)', maxWidth: '240px' }}>
+                              {reg.eventTitle}
+                            </div>
+                            <span style={{ fontSize: '0.78rem', color: 'var(--secondary-text)' }}>
+                              Registered on {formatDate(reg.registrationDate)}
+                            </span>
+                          </td>
+                          <td>
+                            <span className="badge badge-purple" style={{ fontSize: '0.72rem' }}>
+                              {reg.category}
+                            </span>
+                          </td>
+                          <td>
+                            <div style={{ fontWeight: 600 }}>{formatDate(reg.eventDate)}</div>
+                            <div style={{ fontSize: '0.8rem', color: 'var(--secondary-text)', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                              <MapPin size={12} /> {reg.venue}
+                            </div>
+                          </td>
+                          <td>
+                            <span className={`badge ${reg.status === 'CONFIRMED' ? 'badge-success' : 'badge-error'}`}>
+                              {reg.status}
+                            </span>
+                          </td>
+                          <td style={{ textAlign: 'right' }}>
+                            <div style={{ display: 'inline-flex', gap: '8px' }}>
+                              <Link
+                                to={`/events/${reg.eventId}`}
+                                className="btn btn-outline btn-sm"
+                                title="View Event Details"
+                              >
+                                <ExternalLink size={14} />
+                              </Link>
+                              {reg.status === 'CONFIRMED' && reg.eventDate >= today && (
+                                <button
+                                  onClick={() => setCancelTarget(reg)}
+                                  className="btn btn-outline-danger btn-sm"
+                                  title="Cancel Registration"
+                                >
+                                  Cancel
+                                </button>
+                              )}
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="table-scroll-hint">← Scroll horizontally to view all columns →</p>
               </div>
             )}
           </div>

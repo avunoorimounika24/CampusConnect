@@ -96,21 +96,21 @@ const ExploreEvents = () => {
   };
 
   return (
-    <div style={{ padding: '40px 0 80px' }}>
+    <div className="section-py" style={{ paddingTop: '40px' }}>
       <div className="container">
         {/* Header Title */}
         <div style={{ marginBottom: '32px' }}>
-          <h1 style={{ fontSize: '2.4rem', fontWeight: 800, color: 'var(--primary-navy)', marginBottom: '8px' }}>
+          <h1 className="page-title">
             Explore Campus Events
           </h1>
-          <p style={{ color: 'var(--secondary-text)', fontSize: '1.05rem' }}>
+          <p className="page-subtitle">
             Discover workshops, hackathons, sports, and cultural festivals happening across the college campus.
           </p>
         </div>
 
         {/* Filter Bar */}
-        <div className="card" style={{ padding: '24px', marginBottom: '36px' }}>
-          <form onSubmit={handleSearchSubmit} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', alignItems: 'flex-end' }}>
+        <div className="card card-padded" style={{ marginBottom: '36px' }}>
+          <form onSubmit={handleSearchSubmit} className="explore-filter-form">
             {/* Search Input */}
             <div>
               <label className="form-label">
@@ -191,7 +191,7 @@ const ExploreEvents = () => {
           </form>
 
           {/* Active filter summary tag */}
-          <div style={{ marginTop: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.88rem', color: 'var(--secondary-text)' }}>
+          <div className="explore-summary-row">
             <span>
               Showing {events.length} of {totalElements} {totalElements === 1 ? 'event' : 'events'}
             </span>
@@ -233,7 +233,7 @@ const ExploreEvents = () => {
 
             {/* Pagination */}
             {totalPages > 1 && (
-              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '16px' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
                 <button
                   className="btn btn-outline btn-sm"
                   disabled={page === 0}

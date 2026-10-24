@@ -129,15 +129,15 @@ const Home = () => {
       </section>
 
       {/* Featured Upcoming Events */}
-      <section style={{ padding: '80px 0', backgroundColor: 'var(--white)' }}>
+      <section className="section-py" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '40px', flexWrap: 'wrap', gap: '16px' }}>
             <div>
               <span className="badge badge-purple" style={{ marginBottom: '8px' }}>Spotlight</span>
-              <h2 style={{ fontSize: '2.1rem', fontWeight: 800, color: 'var(--primary-navy)' }}>
+              <h2 className="section-title">
                 Featured Upcoming Events
               </h2>
-              <p style={{ color: 'var(--secondary-text)', fontSize: '1rem', marginTop: '4px' }}>
+              <p className="section-subtitle">
                 Handpicked college events happening soon across university departments.
               </p>
             </div>
@@ -176,14 +176,14 @@ const Home = () => {
       </section>
 
       {/* Browse by Categories */}
-      <section style={{ padding: '80px 0', backgroundColor: 'var(--light-bg)' }}>
+      <section className="section-py" style={{ backgroundColor: 'var(--light-bg)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto 50px' }}>
             <span className="badge badge-purple" style={{ marginBottom: '8px' }}>Ecosystem</span>
-            <h2 style={{ fontSize: '2.1rem', fontWeight: 800, color: 'var(--primary-navy)' }}>
+            <h2 className="section-title">
               Explore by Category
             </h2>
-            <p style={{ color: 'var(--secondary-text)', fontSize: '1rem', marginTop: '6px' }}>
+            <p className="section-subtitle">
               Find exactly what matches your academic interests, artistic passion, or athletic spirit.
             </p>
           </div>
@@ -195,16 +195,16 @@ const Home = () => {
                 to={`/events?category=${cat.query}`}
                 className="card"
                 style={{
-                  padding: '24px',
+                  padding: '20px 18px',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '16px',
+                  gap: '14px',
                   transition: 'var(--transition)'
                 }}
               >
                 <div style={{
-                  width: '48px',
-                  height: '48px',
+                  width: '44px',
+                  height: '44px',
                   borderRadius: 'var(--radius-md)',
                   backgroundColor: 'var(--purple-light)',
                   color: 'var(--purple-accent)',
@@ -230,20 +230,20 @@ const Home = () => {
       </section>
 
       {/* How It Works Section */}
-      <section style={{ padding: '80px 0', backgroundColor: 'var(--white)' }}>
+      <section className="section-py" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto 50px' }}>
             <span className="badge badge-navy" style={{ marginBottom: '8px' }}>Step-by-Step Flow</span>
-            <h2 style={{ fontSize: '2.1rem', fontWeight: 800, color: 'var(--primary-navy)' }}>
+            <h2 className="section-title">
               How CampusConnect Works
             </h2>
-            <p style={{ color: 'var(--secondary-text)', fontSize: '1rem', marginTop: '6px' }}>
+            <p className="section-subtitle">
               A seamless end-to-end journey from event discovery to registration and participation.
             </p>
           </div>
 
           <div className="grid-4">
-            <div className="card" style={{ padding: '28px', textAlign: 'center' }}>
+            <div className="card card-padded" style={{ textAlign: 'center' }}>
               <div style={{
                 width: '56px',
                 height: '56px',
@@ -267,7 +267,7 @@ const Home = () => {
               </p>
             </div>
 
-            <div className="card" style={{ padding: '28px', textAlign: 'center' }}>
+            <div className="card card-padded" style={{ textAlign: 'center' }}>
               <div style={{
                 width: '56px',
                 height: '56px',
@@ -291,7 +291,7 @@ const Home = () => {
               </p>
             </div>
 
-            <div className="card" style={{ padding: '28px', textAlign: 'center' }}>
+            <div className="card card-padded" style={{ textAlign: 'center' }}>
               <div style={{
                 width: '56px',
                 height: '56px',
@@ -315,7 +315,7 @@ const Home = () => {
               </p>
             </div>
 
-            <div className="card" style={{ padding: '28px', textAlign: 'center' }}>
+            <div className="card card-padded" style={{ textAlign: 'center' }}>
               <div style={{
                 width: '56px',
                 height: '56px',
@@ -343,11 +343,11 @@ const Home = () => {
       </section>
 
       {/* Benefits Section for Students and Organizers */}
-      <section style={{ padding: '80px 0', backgroundColor: 'var(--light-bg)' }}>
+      <section className="section-py" style={{ backgroundColor: 'var(--light-bg)' }}>
         <div className="container">
           <div className="grid-2">
             {/* For Students */}
-            <div className="card" style={{ padding: '40px' }}>
+            <div className="card card-padded-lg">
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
                 <div style={{ width: '44px', height: '44px', borderRadius: '10px', backgroundColor: 'var(--purple-light)', color: 'var(--purple-accent)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <GraduationCap size={24} />
@@ -380,7 +380,7 @@ const Home = () => {
             </div>
 
             {/* For Clubs & Faculty Coordinators */}
-            <div className="card" style={{ padding: '40px' }}>
+            <div className="card card-padded-lg">
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
                 <div style={{ width: '44px', height: '44px', borderRadius: '10px', backgroundColor: '#E2E8F0', color: 'var(--primary-navy)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <Users size={24} />
@@ -416,17 +416,16 @@ const Home = () => {
       </section>
 
       {/* Ready to Participate CTA */}
-      <section style={{
-        padding: '70px 0',
+      <section className="section-py" style={{
         background: 'linear-gradient(135deg, var(--secondary-navy) 0%, var(--primary-navy) 100%)',
         color: 'var(--white)',
         textAlign: 'center'
       }}>
         <div className="container" style={{ maxWidth: '720px' }}>
-          <h2 style={{ fontSize: '2.4rem', fontWeight: 800, marginBottom: '16px' }}>
+          <h2 className="section-title" style={{ color: 'var(--white)', marginBottom: '16px' }}>
             Ready to Connect with Campus Life?
           </h2>
-          <p style={{ fontSize: '1.1rem', color: '#CBD5E1', marginBottom: '32px' }}>
+          <p className="section-subtitle" style={{ color: '#CBD5E1', marginBottom: '32px' }}>
             Join thousands of students and faculty members already participating in college workshops, sports, and cultural festivals.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>

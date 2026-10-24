@@ -255,20 +255,20 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div style={{ padding: '40px 0 80px' }}>
+    <div className="section-py" style={{ paddingTop: '40px' }}>
       <div className="container">
         {/* Header Title & Actions */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '32px', flexWrap: 'wrap', gap: '16px' }}>
+        <div className="admin-header">
           <div>
             <span className="badge badge-navy" style={{ marginBottom: '6px' }}>Administrative Control Panel</span>
-            <h1 style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--primary-navy)', marginBottom: '6px' }}>
+            <h1 className="page-title">
               College Event Administration
             </h1>
-            <p style={{ color: 'var(--secondary-text)', fontSize: '0.98rem' }}>
+            <p className="page-subtitle">
               Create and manage collegiate events, monitor real-time student registrations, and manage capacity limits.
             </p>
           </div>
-          <div style={{ display: 'flex', gap: '12px' }}>
+          <div className="admin-header-actions">
             <button onClick={fetchDashboardData} className="btn btn-outline">
               <RefreshCw size={16} /> Refresh
             </button>
@@ -293,68 +293,68 @@ const AdminDashboard = () => {
         )}
 
         {/* Statistical Overview Grid */}
-        <div className="grid-4" style={{ marginBottom: '36px' }}>
-          <div className="card" style={{ padding: '22px' }}>
+        <div className="stats-grid" style={{ marginBottom: '36px' }}>
+          <div className="card stat-card">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
               <span style={{ fontSize: '0.85rem', color: 'var(--secondary-text)', fontWeight: 600 }}>Total Events</span>
               <Calendar size={18} color="var(--purple-accent)" />
             </div>
-            <div style={{ fontSize: '2.1rem', fontWeight: 800, color: 'var(--primary-navy)' }}>
+            <div className="stat-card-value" style={{ color: 'var(--primary-navy)' }}>
               {stats?.totalEvents ?? 0}
             </div>
           </div>
 
-          <div className="card" style={{ padding: '22px' }}>
+          <div className="card stat-card">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
               <span style={{ fontSize: '0.85rem', color: 'var(--secondary-text)', fontWeight: 600 }}>Upcoming Active</span>
               <Clock size={18} color="var(--purple-accent)" />
             </div>
-            <div style={{ fontSize: '2.1rem', fontWeight: 800, color: 'var(--purple-accent)' }}>
+            <div className="stat-card-value" style={{ color: 'var(--purple-accent)' }}>
               {stats?.upcomingEvents ?? 0}
             </div>
           </div>
 
-          <div className="card" style={{ padding: '22px' }}>
+          <div className="card stat-card">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
               <span style={{ fontSize: '0.85rem', color: 'var(--secondary-text)', fontWeight: 600 }}>Total Registrations</span>
               <CheckCircle2 size={18} color="var(--success)" />
             </div>
-            <div style={{ fontSize: '2.1rem', fontWeight: 800, color: 'var(--success)' }}>
+            <div className="stat-card-value" style={{ color: 'var(--success)' }}>
               {stats?.totalRegistrations ?? 0}
             </div>
           </div>
 
-          <div className="card" style={{ padding: '22px' }}>
+          <div className="card stat-card">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
               <span style={{ fontSize: '0.85rem', color: 'var(--secondary-text)', fontWeight: 600 }}>Enrolled Students</span>
               <Users size={18} color="var(--primary-navy)" />
             </div>
-            <div style={{ fontSize: '2.1rem', fontWeight: 800, color: 'var(--primary-navy)' }}>
+            <div className="stat-card-value" style={{ color: 'var(--primary-navy)' }}>
               {stats?.totalStudents ?? 0}
             </div>
           </div>
         </div>
 
         {/* Event Management Table Card */}
-        <div className="card" style={{ padding: '28px', marginBottom: '36px' }}>
+        <div className="card card-padded" style={{ marginBottom: '36px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '14px' }}>
             <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--primary-navy)' }}>
               Manage Events ({events.length})
             </h3>
 
             {/* Filter Bar */}
-            <form onSubmit={handleSearchSubmit} style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+            <form onSubmit={handleSearchSubmit} className="admin-filter-form">
               <input
                 type="text"
                 className="form-input"
-                style={{ width: '200px', padding: '8px 12px', fontSize: '0.88rem' }}
+                style={{ padding: '8px 12px', fontSize: '0.88rem' }}
                 placeholder="Search title, venue..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
               <select
                 className="form-select"
-                style={{ width: '150px', padding: '8px 12px', fontSize: '0.88rem' }}
+                style={{ padding: '8px 12px', fontSize: '0.88rem' }}
                 value={categoryFilter}
                 onChange={(e) => setCategoryFilter(e.target.value)}
               >
@@ -370,7 +370,7 @@ const AdminDashboard = () => {
               </select>
               <select
                 className="form-select"
-                style={{ width: '140px', padding: '8px 12px', fontSize: '0.88rem' }}
+                style={{ padding: '8px 12px', fontSize: '0.88rem' }}
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
               >
@@ -394,122 +394,128 @@ const AdminDashboard = () => {
               <p style={{ color: 'var(--secondary-text)' }}>No events match current administrative filters.</p>
             </div>
           ) : (
-            <div className="table-responsive">
-              <table className="custom-table">
-                <thead>
-                  <tr>
-                    <th>Event Details</th>
-                    <th>Category</th>
-                    <th>Date & Venue</th>
-                    <th>Registrations</th>
-                    <th>Status</th>
-                    <th style={{ textAlign: 'right' }}>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {events.map((ev) => (
-                    <tr key={ev.id}>
-                      <td>
-                        <div style={{ fontWeight: 700, color: 'var(--primary-navy)' }}>{ev.title}</div>
-                        <span style={{ fontSize: '0.78rem', color: 'var(--secondary-text)' }}>By: {ev.organizer}</span>
-                      </td>
-                      <td>
-                        <span className="badge badge-purple" style={{ fontSize: '0.72rem' }}>{ev.category}</span>
-                      </td>
-                      <td>
-                        <div style={{ fontWeight: 600 }}>{formatDate(ev.eventDate)}</div>
-                        <span style={{ fontSize: '0.8rem', color: 'var(--secondary-text)' }}>{ev.venue}</span>
-                      </td>
-                      <td>
-                        <div style={{ fontWeight: 700, color: ev.registeredCount >= ev.capacity ? 'var(--error)' : 'var(--primary-navy)' }}>
-                          {ev.registeredCount} / {ev.capacity}
-                        </div>
-                        <span style={{ fontSize: '0.75rem', color: 'var(--secondary-text)' }}>
-                          {Math.max(0, ev.capacity - ev.registeredCount)} seats left
-                        </span>
-                      </td>
-                      <td>
-                        <span className={`badge ${ev.status === 'ACTIVE' ? 'badge-success' : ev.status === 'COMPLETED' ? 'badge-navy' : 'badge-error'}`}>
-                          {ev.status}
-                        </span>
-                      </td>
-                      <td style={{ textAlign: 'right' }}>
-                        <div style={{ display: 'inline-flex', gap: '6px' }}>
-                          <button
-                            onClick={() => openAttendeesModal(ev)}
-                            className="btn btn-outline btn-sm"
-                            title="View registered student participants"
-                          >
-                            <Users size={14} />
-                          </button>
-                          <button
-                            onClick={() => openEditModal(ev)}
-                            className="btn btn-outline btn-sm"
-                            title="Edit Event"
-                          >
-                            <Edit size={14} />
-                          </button>
-                          <button
-                            onClick={() => handleToggleStatus(ev.id, ev.status)}
-                            className={`btn btn-sm ${ev.status === 'ACTIVE' ? 'btn-outline-danger' : 'btn-outline-primary'}`}
-                            title={ev.status === 'ACTIVE' ? 'Deactivate / Cancel Event' : 'Reactivate Event'}
-                          >
-                            <Power size={14} />
-                          </button>
-                          <button
-                            onClick={() => { setDeleteTarget(ev); setShowDeleteModal(true); }}
-                            className="btn btn-outline-danger btn-sm"
-                            title="Delete Event"
-                          >
-                            <Trash2 size={14} />
-                          </button>
-                        </div>
-                      </td>
+            <div>
+              <div className="table-responsive">
+                <table className="custom-table custom-table-admin">
+                  <thead>
+                    <tr>
+                      <th>Event Details</th>
+                      <th>Category</th>
+                      <th>Date & Venue</th>
+                      <th>Registrations</th>
+                      <th>Status</th>
+                      <th style={{ textAlign: 'right' }}>Actions</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {events.map((ev) => (
+                      <tr key={ev.id}>
+                        <td>
+                          <div style={{ fontWeight: 700, color: 'var(--primary-navy)' }}>{ev.title}</div>
+                          <span style={{ fontSize: '0.78rem', color: 'var(--secondary-text)' }}>By: {ev.organizer}</span>
+                        </td>
+                        <td>
+                          <span className="badge badge-purple" style={{ fontSize: '0.72rem' }}>{ev.category}</span>
+                        </td>
+                        <td>
+                          <div style={{ fontWeight: 600 }}>{formatDate(ev.eventDate)}</div>
+                          <span style={{ fontSize: '0.8rem', color: 'var(--secondary-text)' }}>{ev.venue}</span>
+                        </td>
+                        <td>
+                          <div style={{ fontWeight: 700, color: ev.registeredCount >= ev.capacity ? 'var(--error)' : 'var(--primary-navy)' }}>
+                            {ev.registeredCount} / {ev.capacity}
+                          </div>
+                          <span style={{ fontSize: '0.75rem', color: 'var(--secondary-text)' }}>
+                            {Math.max(0, ev.capacity - ev.registeredCount)} seats left
+                          </span>
+                        </td>
+                        <td>
+                          <span className={`badge ${ev.status === 'ACTIVE' ? 'badge-success' : ev.status === 'COMPLETED' ? 'badge-navy' : 'badge-error'}`}>
+                            {ev.status}
+                          </span>
+                        </td>
+                        <td style={{ textAlign: 'right' }}>
+                          <div style={{ display: 'inline-flex', gap: '6px' }}>
+                            <button
+                              onClick={() => openAttendeesModal(ev)}
+                              className="btn btn-outline btn-sm"
+                              title="View registered student participants"
+                            >
+                              <Users size={14} />
+                            </button>
+                            <button
+                              onClick={() => openEditModal(ev)}
+                              className="btn btn-outline btn-sm"
+                              title="Edit Event"
+                            >
+                              <Edit size={14} />
+                            </button>
+                            <button
+                              onClick={() => handleToggleStatus(ev.id, ev.status)}
+                              className={`btn btn-sm ${ev.status === 'ACTIVE' ? 'btn-outline-danger' : 'btn-outline-primary'}`}
+                              title={ev.status === 'ACTIVE' ? 'Deactivate / Cancel Event' : 'Reactivate Event'}
+                            >
+                              <Power size={14} />
+                            </button>
+                            <button
+                              onClick={() => { setDeleteTarget(ev); setShowDeleteModal(true); }}
+                              className="btn btn-outline-danger btn-sm"
+                              title="Delete Event"
+                            >
+                              <Trash2 size={14} />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="table-scroll-hint">← Scroll horizontally to view all columns & actions →</p>
             </div>
           )}
         </div>
 
         {/* Recent Registrations Table */}
-        <div className="card" style={{ padding: '28px' }}>
+        <div className="card card-padded">
           <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--primary-navy)', marginBottom: '18px' }}>
             Recent Platform Registrations
           </h3>
           {stats?.recentRegistrations?.length > 0 ? (
-            <div className="table-responsive">
-              <table className="custom-table">
-                <thead>
-                  <tr>
-                    <th>Student Name</th>
-                    <th>Student ID</th>
-                    <th>Department</th>
-                    <th>Registered Event</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {stats.recentRegistrations.map((reg) => (
-                    <tr key={reg.id}>
-                      <td style={{ fontWeight: 600 }}>{reg.studentName}</td>
-                      <td><span className="badge badge-navy">{reg.studentId || 'N/A'}</span></td>
-                      <td style={{ fontSize: '0.85rem' }}>{reg.department || 'General'}</td>
-                      <td style={{ fontWeight: 600, color: 'var(--primary-navy)' }}>{reg.eventTitle}</td>
-                      <td style={{ fontSize: '0.82rem', color: 'var(--secondary-text)' }}>
-                        {formatDate(reg.registrationDate)}
-                      </td>
-                      <td>
-                        <span className={`badge ${reg.status === 'CONFIRMED' ? 'badge-success' : 'badge-error'}`}>
-                          {reg.status}
-                        </span>
-                      </td>
+            <div>
+              <div className="table-responsive">
+                <table className="custom-table custom-table-registrations">
+                  <thead>
+                    <tr>
+                      <th>Student Name</th>
+                      <th>Student ID</th>
+                      <th>Department</th>
+                      <th>Registered Event</th>
+                      <th>Date</th>
+                      <th>Status</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {stats.recentRegistrations.map((reg) => (
+                      <tr key={reg.id}>
+                        <td style={{ fontWeight: 600 }}>{reg.studentName}</td>
+                        <td><span className="badge badge-navy">{reg.studentId || 'N/A'}</span></td>
+                        <td style={{ fontSize: '0.85rem' }}>{reg.department || 'General'}</td>
+                        <td style={{ fontWeight: 600, color: 'var(--primary-navy)' }}>{reg.eventTitle}</td>
+                        <td style={{ fontSize: '0.82rem', color: 'var(--secondary-text)' }}>
+                          {formatDate(reg.registrationDate)}
+                        </td>
+                        <td>
+                          <span className={`badge ${reg.status === 'CONFIRMED' ? 'badge-success' : 'badge-error'}`}>
+                            {reg.status}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="table-scroll-hint">← Scroll horizontally to view all columns →</p>
             </div>
           ) : (
             <p style={{ color: 'var(--secondary-text)' }}>No student registrations recorded yet.</p>
@@ -733,7 +739,7 @@ const AdminDashboard = () => {
                 Total enrolled: <strong>{selectedEventAttendees.length} students</strong>
               </p>
               <div className="table-responsive" style={{ maxHeight: '400px', overflowY: 'auto' }}>
-                <table className="custom-table">
+                <table className="custom-table custom-table-attendees">
                   <thead>
                     <tr>
                       <th>Student</th>

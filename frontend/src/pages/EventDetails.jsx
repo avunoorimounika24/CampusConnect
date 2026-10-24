@@ -204,23 +204,15 @@ const EventDetails = () => {
 
         {/* Event Hero Card */}
         <div className="card" style={{ marginBottom: '40px', overflow: 'hidden' }}>
-          <div style={{ position: 'relative', height: '360px', backgroundColor: 'var(--secondary-navy)' }}>
+          <div className="event-hero-banner">
             <img
               src={event.imageUrl || defaultImage}
               alt={event.title}
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               onError={(e) => { e.target.src = defaultImage; }}
             />
-            <div style={{
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              right: 0,
-              padding: '30px',
-              background: 'linear-gradient(to top, rgba(20, 33, 61, 0.95) 0%, rgba(20, 33, 61, 0.4) 60%, transparent 100%)',
-              color: 'var(--white)'
-            }}>
-              <div style={{ display: 'flex', gap: '10px', marginBottom: '12px' }}>
+            <div className="event-hero-overlay">
+              <div style={{ display: 'flex', gap: '10px', marginBottom: '12px', flexWrap: 'wrap' }}>
                 <span className="badge badge-purple">{event.category}</span>
                 <span className={`badge ${event.status === 'ACTIVE' ? 'badge-success' : 'badge-navy'}`}>
                   {event.status}
@@ -239,11 +231,11 @@ const EventDetails = () => {
         </div>
 
         {/* Two-column layout: Details + Registration Card */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1.9fr 1.1fr', gap: '36px', alignItems: 'start' }}>
+        <div className="event-details-grid">
           {/* Left Column: Comprehensive Details */}
           <div>
             {/* Description Card */}
-            <div className="card" style={{ padding: '32px', marginBottom: '30px' }}>
+            <div className="card card-padded" style={{ marginBottom: '30px' }}>
               <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--primary-navy)', marginBottom: '18px' }}>
                 About This Event
               </h2>
@@ -253,11 +245,11 @@ const EventDetails = () => {
             </div>
 
             {/* Event Logistics Grid */}
-            <div className="card" style={{ padding: '32px' }}>
+            <div className="card card-padded">
               <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--primary-navy)', marginBottom: '22px' }}>
                 Schedule & Venue Logistics
               </h3>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+              <div className="event-logistics-grid">
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                   <Calendar size={22} style={{ color: 'var(--purple-accent)', flexShrink: 0, marginTop: '2px' }} />
                   <div>
@@ -310,7 +302,7 @@ const EventDetails = () => {
           </div>
 
           {/* Right Column: Registration Card */}
-          <div className="card" style={{ padding: '30px', position: 'sticky', top: '90px' }}>
+          <div className="card event-registration-sidebar">
             <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--primary-navy)', marginBottom: '18px' }}>
               Registration Status
             </h3>

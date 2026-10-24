@@ -15,24 +15,24 @@ import {
 
 const About = () => {
   return (
-    <div style={{ padding: '40px 0 90px' }}>
+    <div className="section-py" style={{ paddingTop: '40px' }}>
       <div className="container">
         {/* Hero Banner */}
-        <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 60px' }}>
+        <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 50px' }}>
           <span className="badge badge-purple" style={{ marginBottom: '12px' }}>
             Empowering Campus Life
           </span>
-          <h1 style={{ fontSize: '2.6rem', fontWeight: 800, color: 'var(--primary-navy)', marginBottom: '16px' }}>
+          <h1 className="page-title">
             Unifying Collegiate Opportunities Across Every Department
           </h1>
-          <p style={{ color: 'var(--secondary-text)', fontSize: '1.1rem', lineHeight: 1.6 }}>
+          <p className="page-subtitle">
             CampusConnect was created to bridge the communication gap between university student bodies, technical clubs, cultural societies, and university administrators.
           </p>
         </div>
 
         {/* Mission and Vision Grid */}
-        <div className="grid-2" style={{ marginBottom: '60px' }}>
-          <div className="card" style={{ padding: '36px' }}>
+        <div className="grid-2" style={{ marginBottom: '50px' }}>
+          <div className="card card-padded">
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '18px' }}>
               <div style={{ width: '48px', height: '48px', borderRadius: '12px', backgroundColor: 'var(--purple-light)', color: 'var(--purple-accent)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Target size={24} />
@@ -46,7 +46,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="card" style={{ padding: '36px' }}>
+          <div className="card card-padded">
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '18px' }}>
               <div style={{ width: '48px', height: '48px', borderRadius: '12px', backgroundColor: '#E2E8F0', color: 'var(--primary-navy)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Compass size={24} />
@@ -62,13 +62,13 @@ const About = () => {
         </div>
 
         {/* Problems Solved Section */}
-        <div className="card" style={{ padding: '44px', marginBottom: '60px' }}>
+        <div className="card card-padded-lg" style={{ marginBottom: '50px' }}>
           <div style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto 36px' }}>
             <span className="badge badge-navy" style={{ marginBottom: '8px' }}>Modern Digital Infrastructure</span>
-            <h2 style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--primary-navy)' }}>
+            <h2 className="section-title">
               Problems CampusConnect Solves
             </h2>
-            <p style={{ color: 'var(--secondary-text)' }}>
+            <p className="section-subtitle">
               Moving universities away from outdated bulletin boards and unmanaged spreadsheets.
             </p>
           </div>
@@ -104,15 +104,15 @@ const About = () => {
         </div>
 
         {/* Platform Pillars */}
-        <div style={{ marginBottom: '60px' }}>
-          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-            <h2 style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--primary-navy)' }}>
+        <div style={{ marginBottom: '50px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '36px' }}>
+            <h2 className="section-title">
               Designed For the Entire University Community
             </h2>
           </div>
 
           <div className="grid-3">
-            <div className="card" style={{ padding: '32px' }}>
+            <div className="card card-padded">
               <div style={{ width: '44px', height: '44px', borderRadius: '10px', backgroundColor: 'var(--purple-light)', color: 'var(--purple-accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
                 <Users size={22} />
               </div>
@@ -124,7 +124,7 @@ const About = () => {
               </p>
             </div>
 
-            <div className="card" style={{ padding: '32px' }}>
+            <div className="card card-padded">
               <div style={{ width: '44px', height: '44px', borderRadius: '10px', backgroundColor: '#E2E8F0', color: 'var(--primary-navy)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
                 <Layers size={22} />
               </div>
@@ -136,7 +136,7 @@ const About = () => {
               </p>
             </div>
 
-            <div className="card" style={{ padding: '32px' }}>
+            <div className="card card-padded">
               <div style={{ width: '44px', height: '44px', borderRadius: '10px', backgroundColor: 'var(--success-light)', color: 'var(--success)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
                 <ShieldCheck size={22} />
               </div>
@@ -151,16 +151,15 @@ const About = () => {
         </div>
 
         {/* CTA Banner */}
-        <div className="card" style={{
-          padding: '48px',
+        <div className="card card-padded-lg" style={{
           textAlign: 'center',
           background: 'linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%)',
           color: 'var(--white)'
         }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '12px' }}>
+          <h2 className="section-title" style={{ color: 'var(--white)', marginBottom: '12px' }}>
             Experience CampusConnect Today
           </h2>
-          <p style={{ color: '#CBD5E1', maxWidth: '560px', margin: '0 auto 24px', fontSize: '1.02rem' }}>
+          <p className="section-subtitle" style={{ color: '#CBD5E1', maxWidth: '560px', margin: '0 auto 24px' }}>
             Discover upcoming hackathons and departmental workshops, or contact our campus administration office.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '14px', flexWrap: 'wrap' }}>
