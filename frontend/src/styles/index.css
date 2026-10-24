@@ -117,17 +117,20 @@ button, input, select, textarea {
   top: 0;
   z-index: 100;
   box-shadow: var(--shadow-sm);
+  width: 100%;
 }
 
 .navbar-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   height: 72px;
+  position: relative;
 }
 
 .brand-logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 12px;
   font-size: 1.35rem;
@@ -135,6 +138,7 @@ button, input, select, textarea {
   color: var(--primary-navy);
   letter-spacing: -0.02em;
   flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .brand-icon-box {
@@ -152,7 +156,10 @@ button, input, select, textarea {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: clamp(14px, 2.2vw, 28px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .nav-link {
@@ -162,6 +169,7 @@ button, input, select, textarea {
   transition: var(--transition);
   padding: 6px 0;
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-link:hover, .nav-link.active {
@@ -179,16 +187,71 @@ button, input, select, textarea {
   border-radius: 2px;
 }
 
+/* Strictly hide mobile auth drawer on desktop */
+.mobile-nav-auth {
+  display: none !important;
+}
+
+.mobile-user-info {
+  display: none;
+}
+
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 .desktop-nav-actions {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-shrink: 0;
+}
+
+.nav-admin-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+}
+
+.nav-guest-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+}
+
+.nav-user-badge-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+}
+
+.nav-portal-btn {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nav-user-badge {
+  text-transform: none;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nav-signout-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .mobile-nav-backdrop {
@@ -207,6 +270,11 @@ button, input, select, textarea {
   justify-content: center;
   min-width: 44px;
   min-height: 44px;
+  transition: var(--transition);
+}
+
+.mobile-menu-btn:hover {
+  background-color: var(--border-light);
 }
 
 /* Buttons */
@@ -1071,6 +1139,15 @@ button, input, select, textarea {
 
 /* Laptops & Small Desktops (max-width: 1024px) */
 @media (max-width: 1024px) {
+  .nav-links {
+    gap: 16px;
+  }
+  .desktop-nav-actions {
+    gap: 8px;
+  }
+  .nav-admin-group {
+    gap: 8px;
+  }
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -1095,30 +1172,6 @@ button, input, select, textarea {
 
 /* Medium Tablets & Below (max-width: 992px) */
 @media (max-width: 992px) {
-  .event-details-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-  .event-registration-sidebar {
-    position: static;
-    top: auto;
-    padding: 24px;
-  }
-  .student-dashboard-layout {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .section-py {
-    padding: 60px 0;
-  }
-}
-
-/* Tablets Portrait & Large Mobile (max-width: 768px) */
-@media (max-width: 768px) {
   .mobile-menu-btn {
     display: flex;
   }
@@ -1151,12 +1204,13 @@ button, input, select, textarea {
     right: 0;
     background-color: var(--white);
     flex-direction: column;
-    padding: 20px 20px 28px;
-    gap: 12px;
+    padding: 16px 20px 28px;
+    gap: 8px;
     border-bottom: 1px solid var(--border-color);
     box-shadow: var(--shadow-lg);
     max-height: calc(100vh - 72px);
     overflow-y: auto;
+    overflow-x: hidden;
     transform: translateY(-10px);
     opacity: 0;
     pointer-events: none;
@@ -1170,16 +1224,19 @@ button, input, select, textarea {
   }
   .nav-link {
     font-size: 1.02rem;
-    padding: 10px 0;
+    padding: 12px 4px;
     border-bottom: 1px solid var(--border-light);
     width: 100%;
   }
+  .nav-link.active::after {
+    display: none;
+  }
   .mobile-nav-auth {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     margin-top: 8px;
-    padding-top: 14px;
+    padding-top: 16px;
     border-top: 2px solid var(--border-light);
     width: 100%;
   }
@@ -1188,13 +1245,38 @@ button, input, select, textarea {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 4px;
+    padding: 4px 2px;
   }
   .mobile-user-role {
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     color: var(--secondary-text);
     font-weight: 600;
   }
 
+  .event-details-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .event-registration-sidebar {
+    position: static;
+    top: auto;
+    padding: 24px;
+  }
+  .student-dashboard-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .section-py {
+    padding: 60px 0;
+  }
+}
+
+/* Tablets Portrait & Large Mobile (max-width: 768px) */
+@media (max-width: 768px) {
   .hero-title {
     font-size: 2.3rem;
   }

@@ -23,7 +23,7 @@ const Navbar = () => {
     };
 
     const handleResize = () => {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth > 992) {
         setMobileMenuOpen(false);
       }
     };
@@ -63,7 +63,11 @@ const Navbar = () => {
           </Link>
 
           {/* Nav Links */}
-          <nav className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+          <nav
+            id="primary-navigation"
+            aria-label="Main navigation"
+            className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}
+          >
             <NavLink to="/" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={closeMenu}>
               Home
             </NavLink>
@@ -118,28 +122,33 @@ const Navbar = () => {
             {/* Desktop-only right actions */}
             <div className="desktop-nav-actions">
               {isAuthenticated ? (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div className="nav-admin-group">
                   {isAdmin ? (
-                    <Link to="/admin" className="btn btn-navy btn-sm">
-                      <ShieldCheck size={16} /> Admin Panel
+                    <Link to="/admin" className="btn btn-navy btn-sm nav-portal-btn">
+                      <ShieldCheck size={16} /> Admin Portal
                     </Link>
                   ) : (
-                    <Link to="/dashboard" className="btn btn-navy btn-sm">
-                      <User size={16} /> My Dashboard
+                    <Link to="/dashboard" className="btn btn-navy btn-sm nav-portal-btn">
+                      <User size={16} /> Dashboard
                     </Link>
                   )}
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span className="badge badge-purple" style={{ textTransform: 'none', fontWeight: 600 }}>
+                  <div className="nav-user-badge-group">
+                    <span className="badge badge-purple nav-user-badge" title={user?.fullName || 'User'}>
                       {user?.fullName?.split(' ')[0] || 'User'}
                     </span>
-                    <button onClick={handleLogout} className="btn btn-outline-danger btn-sm" title="Sign Out">
+                    <button
+                      onClick={handleLogout}
+                      className="btn btn-outline-danger btn-sm nav-signout-btn"
+                      title="Sign Out"
+                    >
                       <LogOut size={15} />
+                      <span className="nav-signout-text">Sign Out</span>
                     </button>
                   </div>
                 </div>
               ) : (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div className="nav-guest-group">
                   <Link to="/login" className="btn btn-outline btn-sm">
                     Sign In
                   </Link>
@@ -156,6 +165,7 @@ const Navbar = () => {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={mobileMenuOpen}
+              aria-controls="primary-navigation"
             >
               {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
             </button>
